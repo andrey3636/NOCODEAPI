@@ -10,7 +10,7 @@ public class CreateUserWithIncorrectEmail extends BaseTest{
     public void UnsuccessfulCreateUserWithIncorrectEmail() {
 
         ValidUserRequest requestBody = ValidUserRequest.builder()
-                .email("999@gmail.c")
+                .email(getErrorEmail())
                 .full_name("Andrey")
                 .password("123456")
                 .generate_magic_link(false)

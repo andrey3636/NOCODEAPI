@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 public class DeleteUserTest extends BaseTest{
 
     String endpoint = "/users/";
-    String email = "888@gmail.com";
+    String email = "4o35mg0ct7n7fj2lazf3@gmail.c";
     @Test
     public void successDelete(){
         Response response = deleteRequest(endpoint+email ,200);

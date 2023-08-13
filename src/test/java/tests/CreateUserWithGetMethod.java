@@ -4,6 +4,8 @@ import dto.ValidUserRequest;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class CreateUserWithGetMethod extends BaseTest{
     String endpoint = "/users";
     @Test
@@ -19,4 +21,6 @@ public class CreateUserWithGetMethod extends BaseTest{
         Response response = getRequest(endpoint, 400);
 
     }
+
+
 }
