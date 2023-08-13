@@ -12,26 +12,21 @@ public class CreateUserTest extends BaseTest{
     @Test
     public void successfulCreateUser() {
 
+        String email = getRandomEmail();
         ValidUserRequest requestBody = ValidUserRequest.builder()
-                .email(getRandomEmail())
+                .email(email)
                 .full_name("SFGGJ55")
                 .password("123456")
                 .generate_magic_link(false)
                 .build();
 
+        Response response = postRequest(endpoint, requestBody);
+        //response.getStatusCode();
+        assertEquals(201, response.getStatusCode());
+//        response.then().assertThat().statusCode(201);
 
-
-        Response response = postRequest(endpoint, 201, requestBody);
-        response.getStatusCode();
-
-        Integer StatusCodeFromDeleteRequest = response.getStatusCode();
-
-        String StatusCodeFromDeleteResponse = deleteRequest("/user/" + StatusCodeFromDeleteRequest ,200)
-                .body().jsonPath().getString("200");
-
-        assertEquals(StatusCodeFromDeleteRequest, StatusCodeFromDeleteResponse);
-
-        deleteRequest("/users/" + getRequest("/users/",201),201);
+        response = deleteRequest(endpoint + "/" + email);
+        assertEquals(200, response.getStatusCode());
 
     }
 

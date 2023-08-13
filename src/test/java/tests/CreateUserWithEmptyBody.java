@@ -4,6 +4,8 @@ import dto.ValidUserRequest;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class CreateUserWithEmptyBody extends BaseTest{
     String endpoint = "/users";
     @Test
@@ -16,7 +18,8 @@ public class CreateUserWithEmptyBody extends BaseTest{
                 .generate_magic_link(false)
                 .build();
 
-        Response response = postRequest(endpoint, 400, requestBody);
+        Response response = postRequest(endpoint, requestBody);
+        assertEquals(400, response.getStatusCode());
 
     }
 }

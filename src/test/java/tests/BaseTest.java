@@ -24,7 +24,7 @@ public class BaseTest {
             .addHeader("Softr-Domain",DOMAIN )
             .build();
 
-    public static Response getRequest(String endPoint, Integer responseCode) {
+    public static Response getRequest(String endPoint/*, Integer responseCode*/) {
         Response response = RestAssured.given()
                 .spec(specification)
                 .when()
@@ -74,7 +74,7 @@ public class BaseTest {
         return response;
     }
 
-    public Response getRequestWithParam(String endPoint, Integer responseCode, String paramName, int id) {
+    public Response getRequestWithParam(String endPoint/*, Integer responseCode*/, String paramName, int id) {
         Response response = RestAssured.given()
                 .spec(specification)
                 .when()
@@ -83,11 +83,11 @@ public class BaseTest {
                 .get(endPoint)
                 .then().log().all()
                 .extract().response();
-        response.then().assertThat().statusCode(responseCode);
+//        response.then().assertThat().statusCode(responseCode);
         return response;
     }
 
-    public Response postRequest(String endPoint, Integer responseCode, Object body) {
+    public Response postRequest(String endPoint/*, Integer responseCode*/, Object body) {
         Response response = RestAssured.given()
                 .spec(specification)
                 .body(body)
@@ -96,11 +96,11 @@ public class BaseTest {
                 .post(endPoint)
                 .then().log().all()
                 .extract().response();
-        response.then().assertThat().statusCode(responseCode);
+//        response.then().assertThat().statusCode(responseCode);
         return response;
     }
 
-    public Response putRequest(String endPoint, Integer responseCode, Object body) {
+    public Response putRequest(String endPoint/*, Integer responseCode*/, Object body) {
         Response response = RestAssured.given()
                 .spec(specification)
                 .body(body)
@@ -109,11 +109,11 @@ public class BaseTest {
                 .put(endPoint)
                 .then().log().all()
                 .extract().response();
-        response.then().assertThat().statusCode(responseCode);
+//        response.then().assertThat().statusCode(responseCode);
         return response;
     }
 
-    public Response deleteRequest(String endPoint, Integer responseCode) {
+    public Response deleteRequest(String endPoint/*, Integer responseCode*/) {
 
         Response response = RestAssured.given()
                 .spec(specification)
@@ -122,7 +122,7 @@ public class BaseTest {
                 .delete(endPoint)
                 .then().log().all()
                 .extract().response();
-        response.then().assertThat().statusCode(responseCode);
+//        response.then().assertThat().statusCode(responseCode);
         return response;
     }
 

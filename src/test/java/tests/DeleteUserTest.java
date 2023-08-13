@@ -1,5 +1,6 @@
 package tests;
 
+import dto.ValidUserRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -7,13 +8,26 @@ import org.junit.jupiter.api.Test;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class DeleteUserTest extends BaseTest{
 
     String endpoint = "/users/";
-    String email = "4o35mg0ct7n7fj2lazf3@gmail.c";
+    //String email = "4o35mg0ct7n7fj2lazf3@gmail.c";
     @Test
     public void successDelete(){
-        Response response = deleteRequest(endpoint+email ,200);
+        String email = getRandomEmail();
+        ValidUserRequest requestBody = ValidUserRequest.builder()
+                .email(email)
+                .full_name("SFGGJ55")
+                .password("123456")
+                .generate_magic_link(false)
+                .build();
+
+        Response response = postRequest(endpoint, requestBody);
+        assertEquals(201, response.getStatusCode());
+        response = deleteRequest(endpoint + email);
+        assertEquals(200, response.getStatusCode());
     }
 
 }

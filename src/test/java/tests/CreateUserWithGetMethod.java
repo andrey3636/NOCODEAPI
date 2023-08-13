@@ -18,7 +18,8 @@ public class CreateUserWithGetMethod extends BaseTest{
                 .generate_magic_link(false)
                 .build();
 
-        Response response = getRequest(endpoint, 400);
+        Response response = getRequest(endpoint);
+        assertEquals(400, response.getStatusCode());
 
     }
 
