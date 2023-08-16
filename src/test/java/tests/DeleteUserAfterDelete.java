@@ -20,9 +20,9 @@ public class DeleteUserAfterDelete extends BaseTest {
 
         Response response = postRequest(endpoint, requestBody);
         assertEquals(201, response.getStatusCode());
-        deleteRequest(endpoint + email);
+        response = deleteRequest(endpoint + email);
         assertEquals(200, response.getStatusCode());
-        deleteRequest(endpoint + email);
+        response = deleteRequest(endpoint + email);
         assertEquals(404, response.getStatusCode());
     }
 }

@@ -24,9 +24,24 @@ public class BaseTest {
             .addHeader("Softr-Domain",DOMAIN )
             .build();
 
-    public static Response getRequest(String endPoint/*, Integer responseCode*/) {
+    public static Response getRequest(String endPoint/*, Integer responseCode*/ ) {
         Response response = RestAssured.given()
                 .spec(specification)
+                .when()
+                .log().all()
+                .get(endPoint)
+                .then().log().all()
+                .extract().response();
+//        response.then().assertThat().statusCode(responseCode);
+        return response;
+    }
+    public static Response getRequest(String endPoint/*, Integer responseCode*/ , Object body) {
+        RequestSpecification spec = given()
+                .spec(specification);
+        if (body != null){
+            spec.body(body);
+        }
+        Response response = spec
                 .when()
                 .log().all()
                 .get(endPoint)
