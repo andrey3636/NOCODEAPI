@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 // Класс тестировщик создания пользователя
 public class CreateUserTest extends BaseTest {
     String endpoint = "/users";
