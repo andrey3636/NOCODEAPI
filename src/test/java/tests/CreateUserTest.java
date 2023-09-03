@@ -6,9 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CreateUserTest extends BaseTest{
+// Класс тестировщик создания пользователя
+public class CreateUserTest extends BaseTest {
     String endpoint = "/users";
 
+    // Тест на удачное создание пользователя
     @Test
     public void successfulCreateUser() {
 
@@ -21,13 +23,12 @@ public class CreateUserTest extends BaseTest{
                 .build();
 
         Response response = postRequest(endpoint, requestBody);
-        //response.getStatusCode();
+        // Проверка кода ответа
         assertEquals(201, response.getStatusCode());
-//        response.then().assertThat().statusCode(201);
 
+        // Запрос-предохранитель на удаление выше созданного пользователя
         response = deleteRequest(endpoint + "/" + email);
+        // Проверка кода ответа
         assertEquals(200, response.getStatusCode());
-
     }
-
 }
