@@ -10,10 +10,11 @@ import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// Класс тестировщик удаления пользователя
 public class DeleteUserTest extends BaseTest{
-
     String endpoint = "/users/";
-    //String email = "4o35mg0ct7n7fj2lazf3@gmail.c";
+    
+    // Тест на удачное удаление пользователя
     @Test
     public void successDelete(){
         String email = getRandomEmail();
@@ -24,9 +25,12 @@ public class DeleteUserTest extends BaseTest{
                 .generate_magic_link(false)
                 .build();
 
+        // Создание случайного пользователя
         Response response = postRequest(endpoint, requestBody);
+        // Проверка кода ответа
         assertEquals(201, response.getStatusCode());
         response = deleteRequest(endpoint + email);
+        // Проверка кода ответа
         assertEquals(200, response.getStatusCode());
     }
 
