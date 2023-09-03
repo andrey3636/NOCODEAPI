@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CreateUserTest extends BaseTest {
     String endpoint = "/users";
 
-    // Удачно созданный пользователь
+    // Тест на удачное создание пользователя
     @Test
     public void successfulCreateUser() {
 
