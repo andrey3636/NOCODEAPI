@@ -7,12 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// Класс тестировщик создания пользователя
 public class CreateUserWithoutPassword extends BaseTest{
     String endpoint = "/users";
     String email = getRandomEmail();
 
-    // Тест на неудачное создание пользователя без пароля
     @Test
     public void UnsuccessfulCreateUserWithoutPassword() {
 
@@ -24,13 +22,11 @@ public class CreateUserWithoutPassword extends BaseTest{
                 .build();
 
         Response response = postRequest(endpoint, requestBody);
-        // Проверка кода ответа
         assertEquals(400, response.getStatusCode());
     }
     
     @AfterEach
     public void after (){
-        // Запрос-предохранитель на удаление выше созданного пользователя
          deleteRequest(endpoint + "/" + email);
     }
 }
