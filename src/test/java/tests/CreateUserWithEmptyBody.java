@@ -7,11 +7,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-// Класс тестировщик создания пользователя
 public class CreateUserWithEmptyBody extends BaseTest{
     String endpoint = "/users";
 
-    // Тест на неудачное создание пользователя с пустыми строками вместо данных
     @Test
     public void UnsuccessfulCreateUserWithEmptyBody() {
 
@@ -23,7 +21,6 @@ public class CreateUserWithEmptyBody extends BaseTest{
                 .build();
 
         Response response = postRequest(endpoint, requestBody);
-        // Проверка кода ответа
         assertEquals(400, response.getStatusCode());
     }
 }
